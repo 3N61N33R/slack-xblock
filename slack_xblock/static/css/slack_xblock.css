@@ -1,0 +1,72 @@
+/* CSS for SlackXBlock */
+
+.slack-link-xblock {
+  padding: 20px;
+  background-color: #f7f7f7;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.slack-link-xblock p {
+  margin-bottom: 15px;
+  font-size: 1.1em;
+  color: #333;
+}
+
+.slack-link-button {
+  display: inline-block;
+  padding: 12px 25px;
+  background-color: #4a154b; /* Slack Purple */
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 1em;
+  transition: background-color 0.3s ease;
+}
+
+.slack-link-button:hover {
+  background-color: #3c0d3c; /* Darker purple on hover */
+  text-decoration: none; /* Prevent underline on hover */
+}
+
+/* Studio View Specific Styling */
+.slack-link-xblock-edit label {
+  display: block;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.slack-link-xblock-edit input[type="text"],
+.slack-link-xblock-edit input[type="url"],
+.slack-link-xblock-edit textarea {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box; /* Include padding in width */
+}
+
+.slack-link-xblock-edit .save-button,
+.slack-link-xblock-edit .cancel-button {
+  padding: 10px 15px;
+  margin-right: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.slack-link-xblock-edit .save-button {
+  background-color: #28a745; /* Green */
+  color: white;
+}
+
+.slack-link-xblock-edit .cancel-button {
+  background-color: #6c757d; /* Gray */
+  color: white;
+}
