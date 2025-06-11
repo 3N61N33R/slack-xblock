@@ -31,6 +31,10 @@ setup(
     ],
     install_requires=[
         "XBlock",
+        "xblock-utils",
+        "requests",
+        "python-decouple",  # For configuration management
+        "django",
     ],
     entry_points={
         "xblock.v1": [

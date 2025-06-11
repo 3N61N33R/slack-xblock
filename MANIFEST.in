@@ -1,0 +1,7 @@
+include README.md
+include LICENSE
+recursive-include slack_xblock/static *
+recursive-include slack_xblock/templates *
+global-exclude *.pyc
+global-exclude __pycache__
+global-exclude .DS_Store
