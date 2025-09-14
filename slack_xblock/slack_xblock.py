@@ -203,4 +203,4 @@ class SlackXBlock(StudioEditableXBlockMixin, XBlock):
                     channel_description="Main discussion channel for Coding Camp I"
                 />""",
             ),
-        ]
+
