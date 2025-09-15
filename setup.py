@@ -25,7 +25,7 @@ setup(
     name="slack_xblock",
     version="0.1",
     description="A simple XBlock to add a Slack channel link to Open edX courses.",
-    license="UNKNOWN",  # TODO: choose a license: 'AGPL v3' and 'Apache 2.0' are popular.
+    license="Apache 2.0",
     packages=[
         "slack_xblock",
     ],
