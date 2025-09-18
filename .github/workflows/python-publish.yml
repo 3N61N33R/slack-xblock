@@ -68,7 +68,7 @@ jobs:
     needs:
       - release-build
     # Only run for pre-releases or if the release tag contains 'test', 'alpha' or 'beta'
-    if: github.event.release.prerelease || contains(github.event.release.tag_name, 'test') || contains(github.event.release.tag_name, 'alpha') || contains(github.event.release.tag_name, 'beta')
+    if: ${{github.event.release.prerelease || contains(github.event.release.tag_name, 'test') || contains(github.event.release.tag_name, 'alpha') || contains(github.event.release.tag_name, 'beta')}}
     permissions:
       id-token: write
     environment:
@@ -95,7 +95,7 @@ jobs:
       - release-build
     
     # Only run for stable releases (not pre-releases)
-    if: !github.event.release.prerelease && !contains(github.event.release.tag_name, 'test') && !contains(github.event.release.tag_name, 'alpha') && !contains(github.event.release.tag_name, 'beta')
+    if: ${{!github.event.release.prerelease && !contains(github.event.release.tag_name, 'test') && !contains(github.event.release.tag_name, 'alpha') && !contains(github.event.release.tag_name, 'beta')}}
     permissions:
       # IMPORTANT: this permission is mandatory for trusted publishing
       id-token: write
