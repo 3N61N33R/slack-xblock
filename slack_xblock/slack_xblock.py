@@ -204,3 +204,54 @@ class SlackXBlock(StudioEditableXBlockMixin, XBlock):
                 />""",
             ),
         ]
+
+    @XBlock.json_handler
+    def join_channel(self, data, suffix=""):
+        """
+        Handler triggered when the user clicks the "Join Channel" button.
+        At this point we only record the intent so course teams can track usage.
+        """
+        channel = data.get("channel") or self.get_channel_name()
+        user_identifier = getattr(self.runtime, "anonymous_student_id", None)
+        if user_identifier is not None:
+            username = self.runtime.get_real_user(user_identifier)
+        else:
+            username = "unknown-user"
+
+        log.info(
+            "Student %s attempted to join Slack channel '%s' for course %s",
+            username,
+            channel,
+            getattr(self, "course_id", "unknown-course"),
+        )
+
+        if not self.slack_workspace_url:
+            return {
+                "success": False,
+                "error": "workspace_not_configured",
+            }
+
+        return {
+            "success": True,
+            "channel": channel,
+            "channel_url": self.get_slack_channel_url(),
+            "invite_url": self.get_slack_invite_url(),
+        }
+
+    @XBlock.json_handler
+    def get_channel_info(self, data, suffix=""):
+        """
+        Provide channel metadata to the front-end so it knows what to display.
+        """
+        channel_name = self.get_channel_name()
+        channel_url = self.get_slack_channel_url()
+        invite_url = self.get_slack_invite_url()
+
+        return {
+            "workspace_configured": bool(self.slack_workspace_url),
+            "channel_name": channel_name,
+            "channel_url": channel_url,
+            "invite_url": invite_url,
+            "show_member_count": self.show_member_count,
+            "description": self.channel_description,
+        }
